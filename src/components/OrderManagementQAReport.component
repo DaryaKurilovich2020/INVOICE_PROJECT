@@ -1,0 +1,117 @@
+<apex:component id="OrderManagementQAReport">
+
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+    <apex:variable value="{! 'OrderManagementQAReport' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+    <div>
+        <table class="headerTable">
+            <tr>
+                <td class="headerColumn">
+                    <h1 class="reportTitle">Invoice Report</h1>
+                </td>
+                <td class="headerColumn">
+                </td>
+            </tr>
+        </table>
+        <hr/>
+
+
+        <h1 class="title">Order:</h1>
+        <p>Company: {!dto['order']['Account.Name']}</p>
+        <p>Start Date:
+            <apex:outputText value="{0,date,dd' 'MMMMM' 'yyyy}">
+                <apex:param value="{!dto['order']['EffectiveDate']}"/>
+            </apex:outputText>
+        </p>
+        <h1 class="title">Developers:</h1>
+        <apex:dataTable value="{!dto['orderItems']}" var="item" id="orderItemsTable" align="center" border="1px" width="100%">
+            <apex:column styleClass="column">
+                <div class="tableContent">
+                    <apex:facet name="header">
+                        <apex:outputText value="Name" styleClass="tableContent"/>
+                    </apex:facet>
+                    <apex:outputText value="{!item.Product2.Contact__r.Name}"/>
+                </div>
+            </apex:column>
+            <apex:column styleClass="column">
+                <div class="tableContent">
+                    <apex:facet name="header">
+                        <apex:outputText value="Working Hours" styleClass="tableContent"/>
+                    </apex:facet>
+                    <apex:outputText value="{!item.Working_Hours__c}"/>
+                </div>
+            </apex:column>
+            <apex:column styleClass="column">
+                <div class="tableContent">
+                    <apex:facet name="header">
+                        <apex:outputText value="Pay-rate" styleClass="tableContent"/>
+                    </apex:facet>
+                    <apex:outputText value="{!item.UnitPrice}" styleClass="tableContent"/>
+                </div>
+            </apex:column>
+            <apex:column styleClass="column">
+                <div class="tableContent">
+                    <apex:facet name="header">
+                        <apex:outputText value="Total" styleClass="tableContent"/>
+                    </apex:facet>
+                    <apex:outputText value="{!item.Total__c}"/>
+                </div>
+            </apex:column>
+        </apex:dataTable>
+        <p>Total: {!dto['total']}</p>
+    </div>
+    <!--    <style>-->
+
+    <!--        .{!defaultClassName} {-->
+
+    <!--        }-->
+
+    <!--    </style>-->
+
+    <!--    <ang-script style="display: none;" type="text/ng-template" id="{!defaultTemplateName}">-->
+
+    <!--        <div class="{! defaultClassName }">-->
+
+    <!--            &lt;!&ndash; Template goes here &ndash;&gt;-->
+
+    <!--        </div>-->
+
+    <!--    </ang-script>-->
+
+
+    <!--    <script>-->
+    <!--        (function (app) {-->
+
+    <!--            var elem = document.getElementById('{!defaultTemplateName}');-->
+    <!--            var templateHTML = elem.innerHTML;-->
+    <!--            elem.parentElement.removeChild(elem);-->
+
+    <!--            var controller = function ($rootScope, $scope, remoteApi) {-->
+
+    <!--                var ctrl = this;-->
+
+    <!--                ctrl.$onInit = function () {-->
+    <!--                    console.log('INIT: {!cmpName}');-->
+    <!--                }-->
+
+    <!--            }-->
+
+    <!--            if (app) {-->
+    <!--                var directiveName = '{!cmpName}';-->
+    <!--                directiveName = directiveName.charAt(0).toLowerCase() + directiveName.slice(1);-->
+    <!--                app.component(-->
+    <!--                    directiveName, {-->
+    <!--                        template: templateHTML,-->
+    <!--                        controller: controller,-->
+    <!--                        bindings: {-->
+    <!--                            vm: '<'-->
+    <!--                        }-->
+    <!--                    }-->
+    <!--                )-->
+
+    <!--            }-->
+    <!--        })(window.app)-->
+    <!--    </script>-->
+
+</apex:component>
