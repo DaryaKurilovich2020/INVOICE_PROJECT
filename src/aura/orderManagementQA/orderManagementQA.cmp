@@ -1,0 +1,128 @@
+<aura:component description="orderManagementQA" implements="force:lightningQuickActionWithoutHeader,force:appHostable"
+                extends="c:vertic_Base">
+    <!-- Attribute Overrides -->
+    <aura:set attribute="processor" value="OrderManagementQAMetaProc"/>
+    <aura:set attribute="hideContentOnBusy" value="{!false}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.baseHandleInit}"/>
+
+
+    <!-- Attributes -->
+    <!-- <aura:attribute name="params" type="Map" access="global" required="{!true}"/> -->
+    <aura:attribute name="content" type="Aura.Component[]">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-3">
+                <lightning:input value="{!v.meta.dto.order.Account.Name}" type="text" label="Company" tooltip="Start Date" disabled="true"/>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning:input value="{!v.meta.dto.order.PriceBook}" type="text" label="PriceBook" tooltip="Start Date" disabled="true"/>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <lightning:input value="{!v.meta.dto.order.EffectiveDate}" type="date" label="Start Date" tooltip="Start Date" disabled="true"/>
+            </div>
+        </div>
+        <c:vertic_ErrorMessages aura:id="errorMessages"/>
+        <br/>
+        <lightning:card title="Order Items">
+            <!--            <div class="slds-m-horizontal_small">-->
+            <!--                <div class="slds-grid slds-grid_vertical">-->
+            <!--                    <div class="slds-col">-->
+            <!--                        <div class="slds-grid">-->
+            <!--                            <div class="slds-col slds-size_1-of-10">-->
+            <!--                            </div>-->
+            <!--                            <div class="slds-col slds-size_2-of-10">-->
+            <!--                                Name-->
+            <!--                            </div>-->
+            <!--                            <div class="slds-col slds-size_2-of-10">-->
+            <!--                                Working Hours-->
+            <!--                            </div>-->
+            <!--                            <div class="slds-col slds-size_2-of-10">-->
+            <!--                                Pay-rate-->
+            <!--                            </div>-->
+            <!--                            <div class="slds-col slds-size_2-of-10">-->
+            <!--                                Total-->
+            <!--                            </div>-->
+            <!--                            <div class="slds-col slds-size_1-of-10">-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <aura:if isTrue="{!not(empty(v.meta.dto.isValidOrder))}">-->
+            <!--                        <div class="slds-col">-->
+            <!--                            <aura:iteration items="{!v.meta.dto.orderItems}" var="item" indexVar="indexVar">-->
+            <!--                                <c:OrderManagementOrderItems orderItem="{!item}"-->
+            <!--                                                             index="{!indexVar}"-->
+            <!--                                                             aura:id="orderItemComponent"-->
+            <!--                                />-->
+            <!--                            </aura:iteration>-->
+            <!--                        </div>-->
+            <!--                    </aura:if>-->
+            <!--                    <hr/>-->
+            <!--                    <div class="slds-col">-->
+            <!--                        <div class="slds-grid">-->
+            <!--                            <div class="slds-col slds-size_1-of-2">-->
+            <!--                                Total-->
+            <!--                            </div>-->
+            <!--                            <div class="slds-col slds-size_1-of-2">-->
+            <!--                                <div style="float:right;">-->
+            <!--                                    {!v.meta.dto.orderTotal}-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+            <!--                    <aura:set attribute="else">-->
+            <!--                        <p class="slds-text-align_center"> There ara more products than orderItems, call your admin to fix</p>-->
+            <!--                    </aura:set>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <table>
+                <thead>
+                <tr>
+                    <td></td>
+                    <td>Name</td>
+                    <td>Working Hours</td>
+                    <td>Pay-rate</td>
+                    <td>Total</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <aura:if isTrue="{!not(empty(v.meta.dto.isValidOrder))}">
+                    <aura:iteration items="{!v.meta.dto.orderItems}" var="item" indexVar="indexVar">
+                        <c:OrderManagementOrderItems orderItem="{!item}"
+                                                     index="{!indexVar}"
+                                                     aura:id="orderItemComponent"
+                        />
+                    </aura:iteration>
+                </aura:if>
+                </tbody>
+            </table>
+        </lightning:card>
+    </aura:attribute>
+
+    <aura:attribute name="footer" type="Aura.Component[]">
+        <lightning:button label="Submit"
+                          variant="brand"
+                          type="submit"
+                          disabled="{!v.meta.dto.allowSubmit}"
+                          onclick="{!not(c.handleSubmitClick)}"
+                          class="slds-m-left_x-small"
+        />
+    </aura:attribute>
+
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               title="Order Management"
+                               widthPercentage="60"
+                               maxWidthRem="60"
+                               minWidthRem="60"
+                               refreshOnCancel="{!true}"
+                               heightPX="500">
+        <c:vertic_ErrorMessages aura:id="errorMessages"/>
+        {!v.content}
+        <aura:set attribute="footer">
+            {!v.footer}
+        </aura:set>
+    </c:vertic_QuickActionModal>
+
+</aura:component>

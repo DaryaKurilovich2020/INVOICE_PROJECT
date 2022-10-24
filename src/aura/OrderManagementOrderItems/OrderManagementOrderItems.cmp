@@ -1,0 +1,90 @@
+<aura:component description="OrderManagementOrderItems">
+
+    <!-- Attribute Overrides -->
+    <aura:attribute type="OrderItem" name="orderItem" access="public"/>
+    <aura:attribute type="Integer" name="index" access="public"/>
+    <!-- <aura:set attribute="processor" value="vertic_GetPageReferenceContentProc"/> -->
+    <!-- <aura:set attribute="hideContentOnBusy" value="{!false}"/> -->
+    <!--    <div class="slds-grid slds-gutters" onmouseover="{!c.displayRemindButton}">-->
+    <!--        <div class="slds-col slds-size_1-of-10">-->
+    <!--            <aura:if isTrue="{!v.orderItem.Total__c == 0}">-->
+    <!--                <lightning:helptext content="All working hours should be populated before submit"/>-->
+    <!--            </aura:if>-->
+    <!--        </div>-->
+    <!--        <div class="slds-col slds-size_2-of-10">-->
+    <!--            <div class="slds-truncate slds-m-vertical_small slds-m-right_small">-->
+    <!--                <lightning:input type="text" value="{!v.orderItem.Product2.Contact__r.Name}" variant="label-hidden" disabled="true"/>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="slds-col slds-size_2-of-10">-->
+    <!--            <div class="slds-truncate slds-m-vertical_small slds-m-right_small">-->
+    <!--                <lightning:input type="number" value="{!v.orderItem.Quantity}" variant="label-hidden" disabled="true"/>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="slds-col slds-size_2-of-10">-->
+    <!--            <div class="slds-truncate slds-m-vertical_small slds-m-right_small">-->
+    <!--                <lightning:input type="number" value="{!v.orderItem.UnitPrice}" variant="label-hidden" disabled="true"/>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="slds-col slds-size_2-of-10">-->
+    <!--            <div class="slds-truncate slds-m-vertical_small slds-m-right_small">-->
+    <!--                <lightning:input type="number" value="{!v.orderItem.Total__c}" variant="label-hidden" disabled="true"/>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="slds-col slds-size_1-of-10">-->
+    <!--            <div class="slds-truncate slds-m-vertical_small slds-float_right">-->
+    <!--                <aura:if isTrue="{!v.orderItem.Total__c == 0}">-->
+    <!--                    <lightning:buttonIcon alternativeText="Remind" type="button" iconName="utility:alert" onclick="{!c.handleRemindClick}" class="remindButton" aura:id="button"/>-->
+    <!--                </aura:if>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <tr>
+        <td>
+            <div class="slds-m-right_small">
+                <aura:if isTrue="{!v.orderItem.Total__c == 0}">
+                    <lightning:helptext content="All working hours should be populated before submit"/>
+                </aura:if>
+            </div>
+        </td>
+        <td>
+            <div class="slds-m-right_small">
+                <p><lightning:formattedUrl label="{!v.orderItem.Product2.Contact__r.Name}" value="{!c.getUrl}" tooltip="Use full domain name" target="_blank" /></p>                <lightning:input type="text" value="{!v.orderItem.Product2.Contact__r.Name}" variant="label-hidden" disabled="true"/>
+                <lightning:input type="text" value="{!v.orderItem.Product2.Contact__r.Name}" variant="label-hidden" disabled="true"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-m-right_small">
+                <lightning:input type="number" value="{!v.orderItem.Working_Hours__c}" variant="label-hidden" disabled="true"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-m-right_small">
+                <lightning:input type="number" value="{!v.orderItem.UnitPrice}" variant="label-hidden" disabled="true"/>
+            </div>
+        </td>
+        <td>
+            <div class="slds-m-right_small">
+                <lightning:input type="number" value="{!v.orderItem.Total__c}" variant="label-hidden" disabled="true"/>
+            </div>
+        </td>
+        <td>
+            <aura:if isTrue="{!v.orderItem.Total__c == 0}">
+                <lightning:buttonIcon alternativeText="Remind" type="button" iconName="utility:alert" onclick="{!c.handleRemindClick}" class="remindButton" aura:id="button"/>
+            </aura:if>
+        </td>
+    </tr>
+    <!-- Attributes -->
+    <!-- <aura:attribute name="params" type="Map" access="global" required="{!true}"/> -->
+
+    <!-- Events -->
+    <!-- <aura:registerEvent name="onSuccess" type="c:vertic_ComponentEvent"/>-->
+
+    <!-- Handlers -->
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/> -->
+
+    <!-- Methods -->
+    <!-- <aura:method name="refresh" action="{!c.handleInit}"></aura:method> -->
+
+
+</aura:component>

@@ -1,0 +1,17 @@
+<apex:page id="WorkingHoursTracking" controller="WorkingHoursTrackingPageCtrl" docType="html-5.0">
+    <apex:form>
+        <apex:pageBlock title="Working Hours Tracking">
+            <apex:pageBlockSection>
+                <label>
+                    {!Name}, please input your working hours:
+                </label>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection>
+                <apex:input value="{!workingHours}" type="number"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection>
+                <apex:commandButton action="{!saveHours}" value="Submit" id="submit"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

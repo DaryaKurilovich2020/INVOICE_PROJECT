@@ -1,0 +1,4 @@
+<apex:component id="workingHoursTracking" controller="WorkingHoursTrackingComponentCtrl" access="global">
+	<apex:attribute name="contactToRedirect" type="Id" access="global" description="contact id" assignTo="{!contactId}"/>
+	<apex:outputLink value="{!siteUrl}" id="theLink">Hours tracking site </apex:outputLink>
+</apex:component>

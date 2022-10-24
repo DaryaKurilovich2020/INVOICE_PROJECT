@@ -1,0 +1,8 @@
+<messaging:emailTemplate subject="Monthly working hours tracking" recipientType="Contact">
+    <messaging:htmlEmailBody>
+        <p>
+            Hello, {!recipient.name}! Please track your working hours following this link
+        </p>
+        <c:workingHoursTracking contactToRedirect="{!recipient.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>
