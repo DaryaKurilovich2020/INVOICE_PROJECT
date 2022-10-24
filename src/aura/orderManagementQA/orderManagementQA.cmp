@@ -104,8 +104,9 @@
         <lightning:button label="Submit"
                           variant="brand"
                           type="submit"
-                          disabled="{!v.meta.dto.allowSubmit}"
-                          onclick="{!not(c.handleSubmitClick)}"
+                          aura:id="OrderManagementQAReport"
+                          disabled="{!v.meta.dto.disableSubmit}"
+                          onclick="{!c.handleSubmitClick}"
                           class="slds-m-left_x-small"
         />
     </aura:attribute>

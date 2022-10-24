@@ -140,8 +140,8 @@
     </head>
 
     <body>
-
-    <apex:include pageName="vertic_ContentBody"/>
+    <apex:dynamicComponent componentValue="{!panel}" invokeAfterAction="true"/>
+    <!--    <apex:include pageName="vertic_ContentBody"/>-->
 
     </body>
 

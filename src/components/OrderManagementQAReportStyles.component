@@ -1,0 +1,90 @@
+<apex:component id="OrderManagementQAReportStyles" layout="none">
+
+    <!--    <apex:variable value="{! 'OrderManagementQAReportStyles' }" var="cmpName"/>-->
+    <!--    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>-->
+    <!--    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>-->
+
+
+    <style>
+        .column {
+            width: 25%;
+            margin-inside: 20px;
+        }
+
+        .tableContent {
+            margin-left: 3px;
+        }
+
+        .link {
+            color: blue;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+
+        .reportTitle {
+            font-size: 15px;
+            color: #ff4dbd;
+        }
+
+        .headerColumn {
+            width: 50%;
+        }
+
+        .imageCell {
+            float: right;
+        }
+
+        .headerTable {
+            width: 100%;
+        }
+
+    </style>
+
+<!--    <ang-script style="display: none;" type="text/ng-template" id="{!defaultTemplateName}">-->
+
+<!--        <div class="{! defaultClassName }">-->
+
+<!--            &lt;!&ndash; Template goes here &ndash;&gt;-->
+
+<!--        </div>-->
+
+<!--    </ang-script>-->
+
+
+<!--    <script>-->
+<!--        (function (app) {-->
+
+<!--            var elem = document.getElementById('{!defaultTemplateName}');-->
+<!--            var templateHTML = elem.innerHTML;-->
+<!--            elem.parentElement.removeChild(elem);-->
+
+<!--            var controller = function ($rootScope, $scope, remoteApi) {-->
+
+<!--                var ctrl = this;-->
+
+<!--                ctrl.$onInit = function () {-->
+<!--                    console.log('INIT: {!cmpName}');-->
+<!--                }-->
+
+<!--            }-->
+
+<!--            if (app) {-->
+<!--                var directiveName = '{!cmpName}';-->
+<!--                directiveName = directiveName.charAt(0).toLowerCase() + directiveName.slice(1);-->
+<!--                app.component(-->
+<!--                    directiveName, {-->
+<!--                        template: templateHTML,-->
+<!--                        controller: controller,-->
+<!--                        bindings: {-->
+<!--                            vm: '<'-->
+<!--                        }-->
+<!--                    }-->
+<!--                )-->
+
+<!--            }-->
+<!--        })(window.app)-->
+<!--    </script>-->
+
+</apex:component>
